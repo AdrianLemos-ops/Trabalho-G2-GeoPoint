@@ -94,3 +94,16 @@ tbody tr:hover {
 .botao-excluir:hover {
     background-color: #b91c1c;
 }
+.botao-editar {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.botao-editar:hover {
+    background-color: #1d4ed8;
+}

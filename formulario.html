@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ponto · GeoPoint</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="centro">
+    <p class="info escondido" id="carregando">Carregando ponto...</p>
+
+    <section class="caixa escondido" id="secao-form">
+      <h1 id="titulo">Novo ponto</h1>
+      <div class="escondido" id="mensagem"></div>
+
+      <form class="formulario" id="form-ponto" novalidate>
+        <div id="campos"></div>
+        <div class="acoes">
+          <button type="submit" id="btn-salvar">Cadastrar</button>
+          <a href="index.html" class="botao secundario">Cancelar</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/componentes.js"></script>
+  <script src="js/formulario.js"></script>
+</body>
+</html>
