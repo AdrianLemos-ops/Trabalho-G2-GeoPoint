@@ -1,17 +1,11 @@
 
-const API_URL = "https://geopoint-6x4u.onrender.com/api/points";
+// ELEMENTO DA TABELA
+const tabela = document.getElementById("lista-pontos");
 
+// LISTAR PONTOS
 async function listarPontos() {
-    const tabela = document.getElementById("lista-pontos");
-
     try {
-        const resposta = await fetch(API_URL);
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao buscar os pontos.");
-        }
-
-        const pontos = await resposta.json();
+        const pontos = await listarPontosAPI();
 
         tabela.innerHTML = "";
 
@@ -27,15 +21,30 @@ async function listarPontos() {
         pontos.forEach(ponto => {
             const linha = document.createElement("tr");
 
-            linha.innerHTML = `
-                <td>${ponto.name}</td>
-                <td>${ponto.description || "Sem descrição"}</td>
-                <td>${ponto.latitude}</td>
-                <td>${ponto.longitude}</td>
-                <td></td>
-            `;
+            const nome = document.createElement("td");
+            nome.textContent = ponto.name;
 
-            // Botão Editar
+            const descricao = document.createElement("td");
+            descricao.textContent = ponto.description || "Sem descrição";
+
+            const latitude = document.createElement("td");
+            latitude.textContent = ponto.latitude;
+
+            const longitude = document.createElement("td");
+            longitude.textContent = ponto.longitude;
+
+            const acoes = document.createElement("td");
+
+            // BOTÃO DETALHES
+            const botaoDetalhes = document.createElement("button");
+            botaoDetalhes.textContent = "Detalhes";
+            botaoDetalhes.className = "botao-detalhes";
+
+            botaoDetalhes.addEventListener("click", () => {
+                verDetalhes(ponto);
+            });
+
+            // BOTÃO EDITAR
             const botaoEditar = document.createElement("button");
             botaoEditar.textContent = "Editar";
             botaoEditar.className = "botao-editar";
@@ -44,7 +53,7 @@ async function listarPontos() {
                 editarPonto(ponto);
             });
 
-            // Botão Excluir
+            // BOTÃO EXCLUIR
             const botaoExcluir = document.createElement("button");
             botaoExcluir.textContent = "Excluir";
             botaoExcluir.className = "botao-excluir";
@@ -53,39 +62,83 @@ async function listarPontos() {
                 excluirPonto(ponto.id);
             });
 
-            linha.lastElementChild.appendChild(botaoEditar);
-            linha.lastElementChild.appendChild(botaoExcluir);
+            acoes.append(
+                botaoDetalhes,
+                botaoEditar,
+                botaoExcluir
+            );
+
+            linha.append(
+                nome,
+                descricao,
+                latitude,
+                longitude,
+                acoes
+            );
 
             tabela.appendChild(linha);
         });
+
+        aplicarPesquisa();
 
     } catch (erro) {
         console.error("Erro:", erro);
 
         tabela.innerHTML = `
             <tr>
-                <td colspan="5">Não foi possível carregar os pontos.</td>
+                <td colspan="5">
+                    Não foi possível carregar os pontos.
+                </td>
             </tr>
         `;
     }
 }
 
-// Função de exclusão
+// PESQUISAR POR NOME OU DESCRIÇÃO
+function aplicarPesquisa() {
+    const campoPesquisa = document.getElementById("pesquisa");
+
+    if (!campoPesquisa) return;
+
+    const pesquisa = campoPesquisa.value.trim().toLowerCase();
+    const linhas = tabela.querySelectorAll("tr");
+
+    linhas.forEach(linha => {
+        const nome = linha.cells[0].textContent.toLowerCase();
+        const descricao = linha.cells[1].textContent.toLowerCase();
+
+        linha.style.display =
+            nome.includes(pesquisa) || descricao.includes(pesquisa)
+                ? ""
+                : "none";
+    });
+}
+
+// EVENTO DA PESQUISA
+const campoPesquisa = document.getElementById("pesquisa");
+
+if (campoPesquisa) {
+    campoPesquisa.addEventListener("input", aplicarPesquisa);
+}
+
+// ABRIR DETALHES NA MESMA ABA
+function verDetalhes(ponto) {
+    window.location.assign(`ponto.html?id=${ponto.id}`);
+}
+
+// ABRIR EDIÇÃO NA MESMA ABA
+function editarPonto(ponto) {
+    window.location.assign(`formulario.html?id=${ponto.id}`);
+}
+
+// EXCLUIR PONTO
 async function excluirPonto(id) {
     const confirmar = confirm("Deseja realmente excluir este ponto?");
 
-    if (!confirmar) {
-        return;
-    }
+    if (!confirmar) return;
 
     try {
-        const resposta = await fetch(`${API_URL}/${id}`, {
-            method: "DELETE"
-        });
-
-        if (!resposta.ok) {
-            throw new Error("Não foi possível excluir o ponto.");
-        }
+        await excluirPontoAPI(id);
 
         alert("Ponto excluído com sucesso!");
 
@@ -93,71 +146,9 @@ async function excluirPonto(id) {
 
     } catch (erro) {
         console.error("Erro:", erro);
-        alert("Erro ao excluir o ponto.");
+        alert("Não foi possível excluir o ponto: " + erro.message);
     }
 }
 
-// Função de edição (vamos implementar na próxima etapa)
-async function editarPonto(ponto) {
-    const nome = prompt("Digite o novo nome:", ponto.name);
-
-    if (nome === null || nome.trim() === "") {
-        return;
-    }
-
-    const descricao = prompt(
-        "Digite a nova descrição:",
-        ponto.description || ""
-    );
-
-    if (descricao === null) {
-        return;
-    }
-
-    const latitude = prompt(
-        "Digite a nova latitude:",
-        ponto.latitude
-    );
-
-    if (latitude === null) {
-        return;
-    }
-
-    const longitude = prompt(
-        "Digite a nova longitude:",
-        ponto.longitude
-    );
-
-    if (longitude === null) {
-        return;
-    }
-
-    try {
-        const resposta = await fetch(`${API_URL}/${ponto.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: nome.trim(),
-                description: descricao.trim(),
-                latitude: Number(latitude),
-                longitude: Number(longitude)
-            })
-        });
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao atualizar o ponto.");
-        }
-
-        alert("Ponto atualizado com sucesso!");
-
-        listarPontos();
-
-    } catch (erro) {
-        console.error("Erro:", erro);
-        alert("Não foi possível atualizar o ponto.");
-    }
-}
-
+// INICIAR LISTAGEM
 listarPontos();

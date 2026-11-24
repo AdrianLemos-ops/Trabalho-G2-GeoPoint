@@ -1,4 +1,6 @@
 
+/* CONFIGURAÇÕES GERAIS */
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +19,8 @@ body {
     margin: 0 auto;
 }
 
+/* CABEÇALHO */
+
 .cabecalho {
     margin-bottom: 35px;
 }
@@ -31,6 +35,8 @@ p {
     color: #666;
 }
 
+/* CONTEÚDO PRINCIPAL */
+
 .conteudo {
     background-color: white;
     padding: 30px;
@@ -39,8 +45,21 @@ p {
 }
 
 .conteudo h2 {
+    margin-bottom: 20px;
+}
+
+/* PESQUISA */
+
+#pesquisa {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
     margin-bottom: 15px;
 }
+
+/* TABELA */
 
 table {
     width: 100%;
@@ -48,7 +67,8 @@ table {
     margin-top: 25px;
 }
 
-th, td {
+th,
+td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -67,6 +87,8 @@ tbody tr:hover {
     background-color: #f1f5f9;
 }
 
+/* BOTÃO NOVO PONTO */
+
 .botao-novo {
     background-color: #2563eb;
     color: white;
@@ -82,6 +104,8 @@ tbody tr:hover {
     background-color: #1d4ed8;
 }
 
+/* BOTÃO EXCLUIR */
+
 .botao-excluir {
     background-color: #dc2626;
     color: white;
@@ -94,8 +118,11 @@ tbody tr:hover {
 .botao-excluir:hover {
     background-color: #b91c1c;
 }
+
+/* BOTÃO EDITAR */
+
 .botao-editar {
-    background-color: #2563eb;
+    background-color: #0f766e;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -105,5 +132,117 @@ tbody tr:hover {
 }
 
 .botao-editar:hover {
+    background-color: #115e59;
+}
+
+/* BOTÃO DETALHES */
+
+.botao-detalhes {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.botao-detalhes:hover {
     background-color: #1d4ed8;
+}
+
+/* FORMULÁRIO */
+
+.escondido {
+    display: none !important;
+}
+
+.formulario {
+    margin-top: 20px;
+}
+
+.grupo-campo {
+    margin-bottom: 18px;
+}
+
+.grupo-campo label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.grupo-campo input,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.grupo-campo textarea {
+    resize: vertical;
+}
+
+.grupo-campo input:focus,
+.grupo-campo textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* AÇÕES DO FORMULÁRIO */
+
+.acoes {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.acoes a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.acoes a:hover {
+    text-decoration: underline;
+}
+
+/* MENSAGENS */
+
+#mensagem {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+#mensagem.erro {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+#mensagem p {
+    margin-bottom: 5px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .conteudo {
+        padding: 18px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+    .acoes {
+        flex-wrap: wrap;
+    }
 }

@@ -1,31 +1,55 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ponto · GeoPoint</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoPoint - Cadastro de Ponto</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <main class="centro">
-    <p class="info escondido" id="carregando">Carregando ponto...</p>
 
-    <section class="caixa escondido" id="secao-form">
-      <h1 id="titulo">Novo ponto</h1>
-      <div class="escondido" id="mensagem"></div>
+    <main class="container">
 
-      <form class="formulario" id="form-ponto" novalidate>
-        <div id="campos"></div>
-        <div class="acoes">
-          <button type="submit" id="btn-salvar">Cadastrar</button>
-          <a href="index.html" class="botao secundario">Cancelar</a>
-        </div>
-      </form>
-    </section>
-  </main>
+        <header class="cabecalho">
+            <h1>GeoPoint</h1>
+            <p>Cadastro e gerenciamento de pontos geográficos.</p>
+        </header>
 
-  <script src="js/api.js"></script>
-  <script src="js/componentes.js"></script>
-  <script src="js/formulario.js"></script>
+        <section class="conteudo escondido" id="secao-form">
+
+            <h2 id="titulo">Novo ponto</h2>
+
+            <div id="mensagem" class="escondido"></div>
+
+            <form id="form-ponto" class="formulario" novalidate>
+
+                <div id="campos"></div>
+
+                <div class="acoes">
+                    <button type="submit" id="btn-salvar" class="botao-novo">
+                        Cadastrar
+                    </button>
+
+                    <a href="index.html">Cancelar</a>
+                </div>
+
+            </form>
+
+        </section>
+
+        <p id="carregando">Carregando formulário...</p>
+
+    </main>
+
+    <script src="api.js"></script>
+    <script src="componentes.js"></script>
+    <script src="formulario.js"></script>
+
 </body>
+
 </html>

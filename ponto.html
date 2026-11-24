@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GeoPoint - Detalhes</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="cabecalho">
+            <h1>GeoPoint</h1>
+            <p>Cadastro e gerenciamento de pontos geográficos.</p>
+        </header>
+
+        <section class="conteudo escondido" id="secao-detalhe">
+
+            <h2 id="nome">Nome do ponto</h2>
+
+            <p><strong>Descrição:</strong> <span id="descricao"></span></p>
+
+            <p><strong>Latitude:</strong> <span id="latitude"></span></p>
+
+            <p><strong>Longitude:</strong> <span id="longitude"></span></p>
+
+            <p><strong>ID:</strong> <span id="ponto-id"></span></p>
+
+            <div class="acoes">
+                <a href="index.html">← Voltar para a lista</a>
+            </div>
+
+        </section>
+
+        <p id="carregando">Carregando ponto...</p>
+
+        <section class="conteudo escondido" id="secao-erro">
+            <p id="erro"></p>
+            <a href="index.html">Voltar para a lista</a>
+        </section>
+
+    </main>
+
+    <script src="api.js"></script>
+    <script src="componentes.js"></script>
+    <script src="detalhe.js"></script>
+
+</body>
+
+</html>
