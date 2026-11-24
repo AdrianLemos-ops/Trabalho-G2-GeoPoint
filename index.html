@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>GeoPoint</title>
 
     <link rel="stylesheet" href="style.css">
@@ -23,9 +24,12 @@
 
             <h2>Meus pontos geográficos</h2>
 
-            <button class="botao-novo">+ Novo Ponto</button>
+            <button class="botao-novo" onclick="window.location.href='formulario.html'">
+                + Novo Ponto
+            </button>
 
             <table>
+
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -36,16 +40,19 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="lista-pontos">
                     <tr>
-                        <td colspan="5">Nenhum ponto cadastrado.</td>
+                        <td colspan="5">Carregando pontos...</td>
                     </tr>
                 </tbody>
+
             </table>
 
         </section>
 
     </main>
+
+    <script src="script.js"></script>
 
 </body>
 

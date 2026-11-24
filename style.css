@@ -81,3 +81,16 @@ tbody tr:hover {
 .botao-novo:hover {
     background-color: #1d4ed8;
 }
+
+.botao-excluir {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botao-excluir:hover {
+    background-color: #b91c1c;
+}
