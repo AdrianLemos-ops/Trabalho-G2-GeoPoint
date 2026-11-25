@@ -33,6 +33,7 @@ Cada ponto possui nome, descrição, latitude, longitude e um identificador úni
 - Exclusão de pontos com confirmação.
 - Validação dos campos obrigatórios.
 - Aceitação de coordenadas com casas decimais.
+- Menu de navegação presente em todas as telas.
 
 ## API utilizada
 
@@ -101,7 +102,7 @@ Cada arquivo possui uma responsabilidade dentro da aplicação:
 - `style.css`: estilos e aparência das páginas.
 - `api.js`: comunicação com a API.
 - `componentes.js`: funções reutilizáveis da interface.
-- `script.js`: listagem, pesquisa, detalhes, edição e exclusão.
+- `script.js`: listagem, pesquisa e exclusão de pontos.
 - `formulario.js`: criação, edição e validação dos dados.
 - `detalhe.js`: busca e apresentação dos dados de um ponto.
 

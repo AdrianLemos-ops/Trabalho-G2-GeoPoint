@@ -246,3 +246,34 @@ tbody tr:hover {
         flex-wrap: wrap;
     }
 }
+
+
+/* Menu de navegação */
+.menu-navegacao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.menu-link:hover {
+    background-color: #eeeeee;
+}
+
+.menu-link.ativo {
+    background-color: #2563eb;
+    color: #ffffff;
+}

@@ -20,6 +20,17 @@
             <p>Cadastro e gerenciamento de pontos geográficos.</p>
         </header>
 
+        <!-- Menu de navegação -->
+        <nav class="menu-navegacao">
+            <a href="index.html" class="menu-link ativo">
+                Pontos
+            </a>
+
+            <a href="formulario.html" class="menu-link">
+                + Novo Ponto
+            </a>
+        </nav>
+
         <section class="conteudo">
 
             <h2>Meus pontos geográficos</h2>
@@ -29,13 +40,6 @@
                 id="pesquisa"
                 placeholder="Pesquisar ponto pelo nome ou descrição..."
             >
-
-            <button
-                class="botao-novo"
-                onclick="window.location.href='formulario.html'"
-            >
-                + Novo Ponto
-            </button>
 
             <table>
 
@@ -62,6 +66,7 @@
     </main>
 
     <script src="api.js"></script>
+    <script src="componentes.js"></script>
     <script src="script.js"></script>
 
 </body>
